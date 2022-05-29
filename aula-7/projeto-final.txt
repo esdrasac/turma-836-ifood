@@ -1,0 +1,49 @@
+Utilizando os conceitos aprendidos em sala, desenvolva uma API que retorne informações sobre
+a série Rick and Morty utilizando o "The Rick and Morty API" para consumir os dados do desenho.
+
+Link da documentação: https://rickandmortyapi.com/documentation/#rest
+
+Base url: https://rickandmortyapi.com/api
+
+Requisitos obrigatórios:
+
+* Personagens:
+* Listar os personagens e permitir o uso de PAGINAÇÃO e o uso de filtros. Filtros que
+devem estar disponíveis:
+* Listar os personagens por status (Vivo ou morto)
+* Listar os personagens por espécie
+* Listar personagens por origem
+* Listar personagens por gênero
+* Buscar personagem por nome
+* Buscar personagem por id
+* Buscar personagem por gênero
+* Criar uma rota SEPARADA para gerar um documento em uma pasta na raiz do projeto com o nome "tmp",
+contendo as informações de um personagem específico. O documento gerado deve ser no
+formato JSON e nomeado com o nome do personagem (ex: "rick-sanchez.json")
+* Locais:
+* Listar Locais e permitir o uso de PAGINAÇÃO e o uso de filtros. Filtros que devem
+estar disponíveis:
+* Listar locais por tipo
+* Listar locais por dimensão
+* Buscar locais por nome
+*
+* Episódios:
+* Listar episódio e permitir o uso de PAGINAÇÃO
+* Buscar episódio por nome
+* Buscar episódio pela tag "episode". Ex.: { "episode":"S01E01" }
+
+* (ex: "rick-sanchez.txt").
+
+* Utilize o módulo http nativo do node JS e a estrutura do projeto apresentado em aula.
+
+Será avaliado os seguintes critérios:
+* Requisitos de negócio citados acima
+* Estrutura do projeto
+* Tratamento de erro (try catch)
+* Legibilidade de código
+* Logs na aplicação
+* Documentação do projeto
+* Não utilize frameworks como express, restify e similares.
+
+obs: QUALQUER recurso utilizado no projeto que não foi ensinado em sala de aula NÃO será avaliado.
+A recomendação é que se utilize apenas recursos aprendidos em sala.

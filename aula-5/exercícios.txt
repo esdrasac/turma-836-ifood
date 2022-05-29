@@ -1,0 +1,16 @@
+1.  Escreva um programa capaz de gerenciar alunos e professores de uma escola. Faça a modelagem das entidades e 
+    da estrutura de pastas do projeto, crie as classes e separe em módulos.
+
+2.  Escreva um programa que list todos os arquivos de um diretório de forma dinâmica e também leia todos os arquivos e mostre
+    na tela. Faça a modelagem das entidades e da estrutura de pastas do projeto, crie as classes e separe em módulos.
+
+3.  Escreva um programa capaz de receber uma requisição http, leia um arquivo e escreva seu valor em forma de string. 
+    Faça a modelagem das entidades e da estrutura de pastas do projeto, crie as classes e separe em módulos.
+
+4.  Escreva um programa capaz de receber uma requisição http, e retorne as informações da maquina em que está sendo executada 
+    (cpus, memória, sistema operacional). Faça a modelagem das entidades e da estrutura de pastas do projeto, 
+    crie as classes e separe em módulos.
+
+5.  Escreva um programa capaz de receber uma requisição http, e retorne as informações da maquina em que está sendo executada 
+    (cpus, memória, sistema operacional) e grave em um arquivo na raíz do projeto. Faça a modelagem das entidades e da estrutura de 
+    pastas do projeto, crie as classes e separe em módulos.
