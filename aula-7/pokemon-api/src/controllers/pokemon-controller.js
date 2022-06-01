@@ -1,28 +1,62 @@
-const Pokemon = require('../models/pokemon')
-const urlEncode = require('url')
-const qs = require('querystring')
-
+const Pokemon = require("../models/pokemon");
+const { setResponse, getErrorResponse } = require("../utils/httpResponse");
 class PokemonController {
-    static async listPokemons(req, res) {
-        try {
-            const { limit } = req.queryParams
-            
-            if(limit && isNaN(limit)) {
-                throw {
-                    statusCode: 404,
-                    message: 'Limit must be a number'
-                }
-            }
+  static async listPokemons(req, res) {
+    try {
+      const { limit } = req.queryParams;
 
-            const pokemons = await Pokemon.listPokemons(limit)
+      if (limit && isNaN(limit)) {
+        throw setResponse(400, "Limit must be a number");
+      }
 
-            res.writeHead(200)
-            res.end(JSON.stringify(pokemons))
-        } catch (error) {
-            res.writeHead(error.statusCode || 500)
-            res.end(JSON.stringify({message: error.message || 'Server Error'}) )
-        }
+      const pokemons = await Pokemon.listPokemons(limit);
+
+      res.writeHead(200);
+      res.end(JSON.stringify(pokemons));
+    } catch (error) {
+      const { status, message } = getErrorResponse(error);
+      res.writeHead(status);
+      res.end(message);
     }
+  }
+
+  static async getPokemonById(req, res) {
+    try {
+      const { id } = req.queryParams;
+
+      if (!id || isNaN(id)) {
+        setResponse(400, "Id is required or invalid");
+      }
+
+      const pokemon = await Pokemon.getPokemonById(id);
+
+      res.writeHead(200);
+      res.end(JSON.stringify(pokemon));
+    } catch (error) {
+      const { status, message } = getErrorResponse(error);
+      res.writeHead(status);
+      res.end(message);
+    }
+  }
+
+  static async getPokemonByName(req, res) {
+    try {
+      const { name } = req.queryParams;
+
+      if (!name || typeof name !== "string") {
+        setResponse(400, "Name is required or invalid");
+      }
+
+      const pokemon = await Pokemon.getPokemonByName(name);
+
+      res.writeHead(200);
+      res.end(JSON.stringify(pokemon));
+    } catch (error) {
+      const { status, message } = getErrorResponse(error);
+      res.writeHead(status);
+      res.end(message);
+    }
+  }
 }
 
-module.exports = PokemonController
+module.exports = PokemonController;

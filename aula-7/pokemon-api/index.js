@@ -1,24 +1,33 @@
-const http = require('http')
-const urlEncode = require('url')
-const qs = require('querystring')
+const http = require("http");
+const urlEncode = require("url");
+const qs = require("querystring");
 
-const log = require('./src/utils/log')
-const routes = require('./src/routes')
+const log = require("./src/utils/log");
+const routes = require("./src/routes");
 
 const server = http.createServer((request, response) => {
-        const {url} = request
-        const { pathname, query } = urlEncode.parse(url)
-      
-        // // { pathname: /pokemons, query: 'limit=30'}
-        // // queryParsed = { limit: 30 }
-    
-        log.request(pathname)
-        const queryParsed = qs.parse(query)
+  try {
+    const { url } = request;
+    const { pathname, query } = urlEncode.parse(url);
 
-        request.queryParams = queryParsed
+    if (!routes[pathname]) {
+      throw {
+        statusCode: 404,
+        message: "Not found",
+      };
+    }
 
-        routes[pathname](request, response)
-})
+    log.request(pathname);
+    const queryParsed = qs.parse(query);
 
-const PORT = 3000
-server.listen(3000, () => console.log(`::: Server listening on port ${PORT}`))
+    request.queryParams = queryParsed;
+
+    routes[pathname](request, response);
+  } catch (error) {
+    response.writeHead(error.statusCode);
+    response.end(error.message);
+  }
+});
+
+const PORT = 3000;
+server.listen(3000, () => console.log(`::: Server listening on port ${PORT}`));

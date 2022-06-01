@@ -1,5 +1,5 @@
-const axios = require('axios')
+const axios = require("axios");
 
 module.exports = axios.create({
-    baseURL: 'https://pokeapi.co/api/v2'
-})
+  baseURL: "https://pokeapi.co/api/v2",
+});
