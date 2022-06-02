@@ -1,5 +1,5 @@
 const axios = require("axios");
 
 module.exports = axios.create({
-  baseURL: "https://pokeapi.co/api/v2",
+  baseURL: process.env.POKE_API_BASE_URL,
 });

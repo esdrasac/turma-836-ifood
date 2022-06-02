@@ -1,11 +1,12 @@
 const Pokemon = require("../models/pokemon");
 const { setResponse, getErrorResponse } = require("../utils/httpResponse");
+
 class PokemonController {
   static async listPokemons(req, res) {
     try {
       const { limit } = req.queryParams;
 
-      if (limit && isNaN(limit)) {
+      if (limit && Number.isNaN(limit)) {
         throw setResponse(400, "Limit must be a number");
       }
 
@@ -24,7 +25,7 @@ class PokemonController {
     try {
       const { id } = req.queryParams;
 
-      if (!id || isNaN(id)) {
+      if (!id || Number.isNaN(id)) {
         setResponse(400, "Id is required or invalid");
       }
 

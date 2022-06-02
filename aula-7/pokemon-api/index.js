@@ -1,3 +1,4 @@
+require("dotenv").config();
 const http = require("http");
 const urlEncode = require("url");
 const qs = require("querystring");
@@ -29,5 +30,6 @@ const server = http.createServer((request, response) => {
   }
 });
 
-const PORT = 3000;
-server.listen(3000, () => console.log(`::: Server listening on port ${PORT}`));
+server.listen(process.env.PORT, () =>
+  console.log(`::: Server listening on port ${process.env.PORT}`)
+);
